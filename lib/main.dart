@@ -1,5 +1,5 @@
-import 'package:coding_challenge_real_estate_app/config/config.dart';
 import 'package:flutter/material.dart';
+import 'package:coding_challenge_real_estate_app/config/config.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,11 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: appRouter,
-      /* home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ), */
+      theme: AppTheme().getTheme(),
     );
   }
 }
