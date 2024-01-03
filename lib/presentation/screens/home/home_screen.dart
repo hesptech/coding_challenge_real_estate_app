@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:coding_challenge_real_estate_app/presentation/widgets/on_boarding.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -8,6 +9,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+
+    final Image titleImage = Image.asset('assets/images/coding_challenge_logo.png', fit: BoxFit.cover);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: titleImage,
+      ),
+      body: const OnBoarding()
+    );
   }
 }
