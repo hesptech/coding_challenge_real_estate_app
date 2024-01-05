@@ -1,3 +1,4 @@
+import 'package:coding_challenge_real_estate_app/presentation/widgets/app_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:coding_challenge_real_estate_app/presentation/widgets/listings_header.dart';
 
@@ -31,12 +32,12 @@ class ListingsScreen extends StatelessWidget {
     body: Column(
       children: [
         SizedBox(
-          height: 100.0,
+          height: 70.0,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: SearchBar(
                   
                   hintText: "Search Here...",
@@ -79,6 +80,7 @@ class ListingsScreen extends StatelessWidget {
         ),
       ],
     ),
+    bottomNavigationBar: const AppNavigationBar(),
   );
 
   Widget buildListings(List<Listing> listings) => ListView.builder(

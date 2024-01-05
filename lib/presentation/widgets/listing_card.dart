@@ -18,14 +18,14 @@ class ListingCard extends StatelessWidget {
     final dataFormatted = DataFormatter(listing);
 
     return  Card(
-      margin: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 28.0),
+      margin: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: Stack(
         children: [
           FadeInImage(
             height: 200,
-            width: MediaQuery.of(context).size.width - 56,
+            width: MediaQuery.of(context).size.width - 48,
             placeholder: const AssetImage('assets/images/no-image.jpg'), 
             image: NetworkImage('https://cdn.repliers.io/$images?class=medium'),
             imageErrorBuilder: (context, error, stackTrace) {
@@ -40,7 +40,7 @@ class ListingCard extends StatelessWidget {
             right: 0,
             child: ClipRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+                filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Colors.transparent,

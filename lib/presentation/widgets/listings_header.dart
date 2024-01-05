@@ -19,7 +19,7 @@ class ListingsHeader extends StatelessWidget {
   final String formattedDateTime = formatter.format(now);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 28.0),
+      margin: const EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 14.0),
       height: 130,
       width: double.infinity,
       decoration: const BoxDecoration(
