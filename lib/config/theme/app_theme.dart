@@ -32,5 +32,14 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: kBgGreyColor
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      hintStyle: TextStyle(color: kTxtLightGreyColor),
+      fillColor: kOnPrimary,
+    ),
+    /* searchBarTheme: const SearchBarThemeData(
+      backgroundColor: MaterialStatePropertyAll<Color>(kOnPrimary),
+
+    ) */
   );
 }
