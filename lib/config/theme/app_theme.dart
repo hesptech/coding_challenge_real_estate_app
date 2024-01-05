@@ -8,6 +8,8 @@ class AppTheme {
   static const kSecondaryColor = Color(0xFFF3A317);
   static const kTxtLightGreyColor = Color(0xFF8F8F8F);
   static const kBgGreyColor = Color(0xFFF6F7F9);
+  static const kOnBackgroundColor = Colors.black;
+
 
   AppTheme();
 

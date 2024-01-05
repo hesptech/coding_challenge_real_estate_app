@@ -1,9 +1,10 @@
-//import 'dart:js';
-
 import 'package:flutter/material.dart';
+
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 import 'package:coding_challenge_real_estate_app/models/models.dart';
+import 'package:coding_challenge_real_estate_app/presentation/utils/data_formatter.dart';
 import 'package:coding_challenge_real_estate_app/api/listings_api.dart';
+import 'package:coding_challenge_real_estate_app/presentation/widgets/listing_card.dart';
 
 class ListingsScreen extends StatelessWidget {
 
@@ -86,26 +87,13 @@ class ListingsScreen extends StatelessWidget {
     itemBuilder: (context, index) {
       final listing = listings[index];
       final numIndexToString = index.toString();
-      final String images = listing.images?.first?? '';
 
       return index == 0 ? 
       ListTile(
         title: Text(listing.listPrice?? ''),
         subtitle: Text(numIndexToString),
       ) : 
-      Card(
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        child: const Stack(
-          children: [
-            FadeInImage(
-              height: 100,
-              placeholder: AssetImage('assets/images/no-image.jpg'), 
-              image: AssetImage('assets/images/no-image.jpg'),
-            )
-          ],
-        ),
-      );
+      ListingCard(listing: listing);
     }
   );
 }
