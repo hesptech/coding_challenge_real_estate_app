@@ -42,7 +42,6 @@ class ListingCard extends StatelessWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
                 child: Container(
-                  // the size where the blurring starts
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Colors.transparent,
                 ),
@@ -57,7 +56,14 @@ class ListingCard extends StatelessWidget {
               style: const TextStyle(
                 color: AppTheme.kOnPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: 16.0, 
+                fontSize: 16.0,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(1.0, 1.0),
+                    blurRadius: 3.0,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ],
               ),
             ),
           ),
@@ -98,7 +104,14 @@ class ListingCard extends StatelessWidget {
             child: Text(
               dataFormatted.listPrice, 
               style: const TextStyle(
-                color: AppTheme.kOnPrimary,  
+                color: AppTheme.kOnPrimary,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(1.0, 1.0),
+                    blurRadius: 3.0,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ], 
               ),
             ),
           ),
@@ -108,7 +121,14 @@ class ListingCard extends StatelessWidget {
             child: Text(
               dataFormatted.numBedrooms, 
               style: const TextStyle(
-                color: AppTheme.kOnPrimary,  
+                color: AppTheme.kOnPrimary,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(1.0, 1.0),
+                    blurRadius: 3.0,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ],
               ),
             ),
           ),

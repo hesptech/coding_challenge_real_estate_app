@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:coding_challenge_real_estate_app/presentation/widgets/listings_header.dart';
 
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 import 'package:coding_challenge_real_estate_app/models/models.dart';
-import 'package:coding_challenge_real_estate_app/presentation/utils/data_formatter.dart';
 import 'package:coding_challenge_real_estate_app/api/listings_api.dart';
 import 'package:coding_challenge_real_estate_app/presentation/widgets/listing_card.dart';
 
@@ -85,14 +85,11 @@ class ListingsScreen extends StatelessWidget {
     physics: const BouncingScrollPhysics(),
     itemCount: listings.length,
     itemBuilder: (context, index) {
+
       final listing = listings[index];
-      final numIndexToString = index.toString();
 
       return index == 0 ? 
-      ListTile(
-        title: Text(listing.listPrice?? ''),
-        subtitle: Text(numIndexToString),
-      ) : 
+      ListingsHeader(listing: listing,) : 
       ListingCard(listing: listing);
     }
   );
