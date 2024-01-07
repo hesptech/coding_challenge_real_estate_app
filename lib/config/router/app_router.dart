@@ -1,26 +1,10 @@
-import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import '/presentation/screens/screens.dart';
 
-// GoRouter configuration
-final appRouter = GoRouter(
-  initialLocation: '/',
-  routes: [
-    GoRoute(
-      path: '/',
-      name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen(),
-    ),
+var customRoutes = <String, WidgetBuilder>{
 
-    GoRoute(
-      path: '/listings',
-      name: ListingsScreen.name,
-      builder: (context, state) => const ListingsScreen(),
-    ),
+  '/': ( _ ) => const HomeScreen(),
+  'listings': ( _ ) => const ListingsScreen(),
+  'description': ( _ ) => const DescriptionScreen(),
 
-    GoRoute(
-      path: '/description',
-      name: DescriptionScreen.name,
-      builder: (context, state) => const DescriptionScreen(),
-    ),
-  ],
-);
+};

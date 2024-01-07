@@ -25,8 +25,10 @@ class ListingsHeader extends StatelessWidget {
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(
-            image: NetworkImage('https://cdn.repliers.io/IMG-X7377266_1.jpg?class=medium'),
-            fit: BoxFit.cover),
+          //image: const AssetImage('assets/images/IMG-X7377266_1.webp'),
+          //image: NetworkImage('https://cdn.repliers.io/IMG-X7377266_1.jpg?class=medium'),
+          image: NetworkImage('https://applicazioni-web.net/images_repliers/IMG-X7377266_1.webp'),
+          fit: BoxFit.cover),
       ),
       child: Stack(
         children: [

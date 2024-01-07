@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 
 class OnBoardingButton extends StatelessWidget {
@@ -35,7 +34,7 @@ class OnBoardingButton extends StatelessWidget {
             curve: Curves.easeOut
           );
         } else {
-          context.push('/listings');
+          Navigator.pushNamed(context, 'listings');
         }
       },
       child: Row(

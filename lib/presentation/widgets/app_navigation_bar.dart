@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+//import 'package:go_router/go_router.dart';
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 
 
@@ -17,13 +17,17 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
       //_selectedIndex = index;
       //print(loggedIn);
       if (index == 0) {
-        context.push('/listings');
+        //context.push('/listings');
+        Navigator.pushNamed(context, '/');
       } else if (index == 1) {
-        context.push('/listings');
+        //context.push('/listings');
+        Navigator.pushNamed(context, 'listings');
       } else if (index == 2) {
-        context.push('/listings');
+        //context.push('/listings');
+        Navigator.pushNamed(context, 'listings');
       } else if (index == 3) {
-        context.push('/listings');
+        //context.push('/listings');
+        Navigator.pushNamed(context, 'listings');
       }
     });
   }
