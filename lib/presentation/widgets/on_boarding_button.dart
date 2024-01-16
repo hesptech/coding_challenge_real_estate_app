@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:coding_challenge_real_estate_app/presentation/providers/exit_button_provider.dart';
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 
-class OnBoardingButton extends StatelessWidget {
+class OnBoardingButton extends ConsumerWidget {
 
   final String textButton; 
   final PageController? controller;
@@ -10,11 +13,10 @@ class OnBoardingButton extends StatelessWidget {
   const OnBoardingButton({super.key, required this.textButton, this.controller, required this.endReached});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     late double pageNum = controller?.page?? 0;
-
-    final String spacesTextButton = endReached ? '$textButton  ' : 'Next  ';
+    final bool exitBool = (textButton == 'Exit') ? true : false ;
 
     return TextButton(
       style: ButtonStyle(
@@ -28,7 +30,7 @@ class OnBoardingButton extends StatelessWidget {
         )
       ),
       onPressed: () {
-        if (!endReached && pageNum <= 1) {
+        if (!exitBool && pageNum <= 1) {
           controller!.nextPage(
             duration: const Duration(seconds: 1), 
             curve: Curves.easeOut
@@ -36,16 +38,20 @@ class OnBoardingButton extends StatelessWidget {
         } else {
           Navigator.pushNamed(context, 'listings');
         }
+
+        if(pageNum > 1.5) ref.read(exitButtonProvider.notifier).update((state) => state = true);
+        //print(ref.read(exitButtonProvider.notifier).state);
+        //print(controller?.offset?? 0);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(width: 5.0,),
           Text(
-            spacesTextButton,
+            '$textButton  ',
             style: const TextStyle(fontSize: 18)
           ),
-          !endReached ? const Stack(
+          !exitBool ? const Stack(
             children: [
               Icon(
                 Icons.horizontal_rule_outlined,

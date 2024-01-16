@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:coding_challenge_real_estate_app/presentation/providers/exit_button_provider.dart';
 import 'package:coding_challenge_real_estate_app/presentation/widgets/richtext_slides.dart';
 import 'package:coding_challenge_real_estate_app/presentation/widgets/on_boarding_button.dart';
 
 
-class OnBoardingSlide extends StatefulWidget {
+class OnBoardingSlide extends ConsumerStatefulWidget {
 
   final String titlePrimaryColor;
   final String titleSecondaryColor;
@@ -24,13 +27,16 @@ class OnBoardingSlide extends StatefulWidget {
   });
 
   @override
-  State<OnBoardingSlide> createState() => OnBoardingSlideState();
+  OnBoardingSlideState createState() => OnBoardingSlideState();
 }
 
-class OnBoardingSlideState extends State<OnBoardingSlide> {
+class OnBoardingSlideState extends ConsumerState<OnBoardingSlide>  with WidgetsBindingObserver{
   @override
   Widget build(BuildContext context) {
     
+    final exitButton = ref.read( exitButtonProvider.notifier ).state;
+    final double pageNum = widget.controller?.offset?? 0;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,9 +55,13 @@ class OnBoardingSlideState extends State<OnBoardingSlide> {
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: !widget.endReached 
-          ? OnBoardingButton(textButton: 'Exit', controller: widget.controller, endReached: widget.endReached) 
-          : OnBoardingButton(textButton: 'Exit', controller: widget.controller, endReached: widget.endReached),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              pageNum < 44.9 ? OnBoardingButton(textButton: 'Next  ', controller: widget.controller, endReached: widget.endReached) : const SizedBox(),
+              pageNum > 44.9 || exitButton ? OnBoardingButton(textButton: 'Exit', controller: widget.controller, endReached: widget.endReached) : const SizedBox(),
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
