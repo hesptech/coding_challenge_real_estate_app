@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:coding_challenge_real_estate_app/presentation/providers/favorites_provider.dart';
 import 'package:coding_challenge_real_estate_app/models/models.dart';
 import 'package:coding_challenge_real_estate_app/config/config.dart';
 import 'package:coding_challenge_real_estate_app/presentation/utils/data_formatter.dart';
 
-class DescriptionScreen extends StatelessWidget {
+
+class DescriptionScreen extends ConsumerStatefulWidget {
+  const DescriptionScreen({super.key});
+
+  @override
+  DescriptionScreenState createState() => DescriptionScreenState();
+}
+class DescriptionScreenState extends ConsumerState<DescriptionScreen> {
 
   static const String name = 'description_screen';
-
-  const DescriptionScreen({super.key});
+ 
+  //const DescriptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +67,36 @@ class DescriptionScreen extends StatelessWidget {
                             fontSize: 28.0,
                           ),
                         ),
-                        const Icon(
-                          Icons.favorite_outline, 
-                          size: 38.0,
-                        ),
+
+                        IconButton(
+                          onPressed: (){
+                            setState(() {
+
+                              if(ref.read(favoritesProvider.notifier).favoritesList().contains(listing.mlsNumber)) {
+                                ref.read(favoritesProvider.notifier).deleteFavorite(listing.mlsNumber?? '');
+                              } else {
+                                ref.read(favoritesProvider.notifier).addFavorite(listing.mlsNumber?? '');
+                              }
+
+                            });
+
+                            //print(ref.read(favoritesProvider.notifier).favoritesList());
+                            //print(favoritesState.length);
+
+                          }, 
+                          icon: ref.watch(favoritesProvider.notifier).favoritesList().contains(listing.mlsNumber) 
+                          ? const Icon(
+                            Icons.favorite,
+                            size: 38.0,
+                            color: AppTheme.kSecondaryColor,
+                          )
+                          : const Icon(
+                            Icons.favorite_border,
+                            size: 38.0,
+                          )
+                        )
+
+
                       ],
                     ),
                     const SizedBox(height: 18.0),

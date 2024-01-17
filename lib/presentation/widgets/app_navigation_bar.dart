@@ -21,7 +21,7 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
         Navigator.pushNamed(context, '/');
       } else if (index == 1) {
         //context.push('/listings');
-        Navigator.pushNamed(context, 'listings');
+        Navigator.pushNamed(context, 'favorites');
       } else if (index == 2) {
         //context.push('/listings');
         Navigator.pushNamed(context, 'listings');

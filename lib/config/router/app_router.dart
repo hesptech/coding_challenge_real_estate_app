@@ -6,5 +6,6 @@ var customRoutes = <String, WidgetBuilder>{
   '/': ( _ ) => const HomeScreen(),
   'listings': ( _ ) => const ListingsScreen(),
   'description': ( _ ) => const DescriptionScreen(),
+  'favorites': ( _ ) => const Favorites(),
 
 };
